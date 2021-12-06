@@ -346,9 +346,38 @@
         (14) Para que todas as urls do projeto peguem do raiz a url task
              insira a linha
              path('',include('tasks.urls'))
-    
+              
           
-          
+             Ciclo completo dentro de task
+
+        (1)  Na url dentro de task
+             inserir uma nova url
+             path('',view.tasklist, name='task-list')
+
+        (2)  View dentro da task
+             def tasklist(request):
+                 return render('request,task/list.html')
+
+        (3)  Dentro do task ->  criar uma pasta template
+             dentro da pasta template
+             criar uma nova pasta task
+             e dentro da pasta task, criar então o html basico
+             list.html.
+
+
+
+              Passando argumentos pela URL
+
+         (1) Dentro da url dentro de task
+             path('yourname/<str:name>', views.yourName, name='your-name'),
+
+         (2) Dentro da view
+             def yourName(request, name):
+             return render(request,'tasks/yourname.html',('name': name)) 
+
+         (3) Criando template
+             dentro do task template
+             <h1> O seu nome é: {{ name }} </h1> 
           
           
           
