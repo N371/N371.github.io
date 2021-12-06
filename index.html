@@ -115,142 +115,142 @@
    <pre>
   
  
-   EXEMPLO DA CRIAÇÃO DO AMBIENTE COM MYSQL E WORKBENCH
+      EXEMPLO DA CRIAÇÃO DO AMBIENTE COM MYSQL E WORKBENCH
  
-   ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '214236';
+      ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '214236';
   
  
-   ENTRANDO COMO SUPERUSUARIO
-   sudo mysql -uroot -p
+      ENTRANDO COMO SUPERUSUARIO
+      sudo mysql -uroot -p
  
-   VERIFICANDO O STATUS DO SERVIDOR MYSQL
-   service mysql status
+      VERIFICANDO O STATUS DO SERVIDOR MYSQL
+      service mysql status
  
-   INSTALANDO O PACOTE QUE FOI DESCOMPACTADO DO WORKBENCH
-   sudo apt-get -f install
+      INSTALANDO O PACOTE QUE FOI DESCOMPACTADO DO WORKBENCH
+      sudo apt-get -f install
   
-   PACOTE BAIXADO DO WORKBENCH A SER INSTALANDOsudo 
-   dpkg -i mysql-workbench-community.deb
+      PACOTE BAIXADO DO WORKBENCH A SER INSTALANDOsudo 
+      dpkg -i mysql-workbench-community.deb
   
-   LINK PARA BAIXAR O WORKBENCH
-   wget http://cdn.mysql.com/Downloads/MySQLGUITools/mysql-workbench-community_8.0.25-1ubuntu20.04_amd64.deb -O mysql-workbench-community.deb
+      LINK PARA BAIXAR O WORKBENCH
+      wget http://cdn.mysql.com/Downloads/MySQLGUITools/mysql-workbench-community_8.0.25-1ubuntu20.04_amd64.deb -O mysql-workbench-community.deb
   
-   COMANDO PARA VERIFICAR A VERSÃO DO UBUNTU
-   lsb_release -rs
+      COMANDO PARA VERIFICAR A VERSÃO DO UBUNTU
+      lsb_release -rs
   
-   CRIANDO PROJETOS  DJANGO
-   django-admin startproject nome_do_projeto
-   RENOMEIO O DIRETÓRIO DE PROJETOS
+      CRIANDO PROJETOS  DJANGO
+      django-admin startproject nome_do_projeto
+      RENOMEIO O DIRETÓRIO DE PROJETOS
  
  
   
-   'CRIANDO UM APP 
-   manage.py startapp main
+      'CRIANDO UM APP 
+      manage.py startapp main
    
-     CONFIGURANDO  o settings.py  
+      CONFIGURANDO  o settings.py  
   
-   LANGUAGE_CODE = 'pt-br'
+      LANGUAGE_CODE = 'pt-br'
   
-   TIME_ZONE = 'America/Sao Paulo'
+      TIME_ZONE = 'America/Sao Paulo'
   
  
-   INSTALLED_APPS = [
+      INSTALLED_APPS = [
   
-   ‘django.contrib.admin’,
+      ‘django.contrib.admin’,
   
-   ‘django.contrib.auth’,
+      ‘django.contrib.auth’,
  
-   ‘django.contrib.contenttypes’,
+      ‘django.contrib.contenttypes’,
   
-   ‘django.contrib.sessions’,
+      ‘django.contrib.sessions’,
   
-   ‘django.contrib.messages’,
+      ‘django.contrib.messages’,
   
-   ‘django.contrib.staticfiles’,
+      ‘django.contrib.staticfiles’,
   
-   ‘main.apps.MainConfig’,
+      ‘main.apps.MainConfig’,
   
-   ]
+      ]
  
-   STATICFILES_DIRS = (
-     os.path.join(BASE_DIR, ‘static’),
-     )
-     STATIC_ROOT = os.path.join(BASE_DIR, ‘staticfiles’)
+      STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, ‘static’),
+        )
+        STATIC_ROOT = os.path.join(BASE_DIR, ‘staticfiles’)
    
    
-     MEDIA_ROOT = os.path.join(BASE_DIR, ‘upload’)
-     MEDIA_URL = ‘/upload/’
+        MEDIA_ROOT = os.path.join(BASE_DIR, ‘upload’)
+        MEDIA_URL = ‘/upload/’
    
     
     
-     DATABASES = {
+        DATABASES = {
       
-       ‘default’: {
-         ‘ENGINE’: ‘django.db.backends.mysql’,
-        ‘NAME’: os.path.join(BASE_DIR, ‘db.mysql),
-         'USER': 'DB_USER',
-         'PASSWORD': '214236',
-         'Host': 'localhost',   
-         'PORT': '3306',
+          ‘default’: {
+            ‘ENGINE’: ‘django.db.backends.mysql’,
+            ‘NAME’: os.path.join(BASE_DIR, ‘db.mysql),
+            'USER': 'DB_USER',
+            'PASSWORD': '214236',
+            'Host': 'localhost',   
+            'PORT': '3306',
        
-           }
+               }
         
-  }
+     }
   
   
-   INSTALANDO O CONNECTOR PYTHON PARA MYSQL
-   pip install mysql-connector-python
+      INSTALANDO O CONNECTOR PYTHON PARA MYSQL
+      pip install mysql-connector-python
   
-   SE FOR PRECISO ATUALIZAR VERSÃO DO DJANGO
-   pip install django==3.0.7
+      SE FOR PRECISO ATUALIZAR VERSÃO DO DJANGO
+      pip install django==3.0.7
   
-   erro=>
-   query = query.decode(errors='replace')
-   AttributeError: 'str' object has no attribute 'decode'
+      erro=>
+      query = query.decode(errors='replace')
+      AttributeError: 'str' object has no attribute 'decode'
   
-   ATUALIZANDO TUDO
-   ./manage.py migrate
+      ATUALIZANDO TUDO
+      ./manage.py migrate
+    
+      INICIANDO O SERVIDOR
+      ./manage.py runserver
   
-   INICIANDO O SERVIDOR
-   ./manage.py runserver
+       erro=
+      Your models have changes that are not yet reflected in a migration, and so won't be applied.
+      Run 'manage.py makemigrations' to make new migrations, and then re-run 'manage.py migrate' to apply them.
   
-   erro=
-   Your models have changes that are not yet reflected in a migration, and so won't be applied.
-   Run 'manage.py makemigrations' to make new migrations, and then re-run 'manage.py migrate' to apply them.
-  
-  PARA EXIBIR OS REGISTROS
+      PARA EXIBIR OS REGISTROS
 
-   ./manage.py shell
-   Python 3.8.10 (default, Sep 28 2021, 16:10:42) 
-   [GCC 9.3.0] on linux
-   Type "help", "copyright", "credits" or "license" for more information.
-   (InteractiveConsole)
-   >>> from main.models import Produto
-   >>> Produto.objects.all()
+      ./manage.py shell
+      Python 3.8.10 (default, Sep 28 2021, 16:10:42) 
+      [GCC 9.3.0] on linux
+      Type "help", "copyright", "credits" or "license" for more information.
+      (InteractiveConsole)
+      >>> from main.models import Produto
+      >>> Produto.objects.all()
 
 
-  PARA A MENSAGEM DE ERRO QUANDO PYTHON ESTIVER INSTALADO
+      PARA A MENSAGEM DE ERRO QUANDO PYTHON ESTIVER INSTALADO
   
     
-   /usr/bin/env: “python”: Arquivo ou diretório inexistente
-  whereis python3
-  sudo ln -s /usr/bin/python3 /usr/bin/python
+      /usr/bin/env: “python”: Arquivo ou diretório inexistente
+      whereis python3
+      sudo ln -s /usr/bin/python3 /usr/bin/python
   
   
-  ERRO:
-  raise ImproperlyConfigured( django.core.exceptions.ImproperlyConfigured: E
-  Error loading MySQLdb module. Did you install mysqlclient?
+      ERRO:
+      raise ImproperlyConfigured( django.core.exceptions.ImproperlyConfigured: E
+      Error loading MySQLdb module. Did you install mysqlclient?
   
-   __init__.py
+      __init__.py
   
-  import pymysql
+      import pymysql
   
-   pymysql.install_as_MySQLdb()
+      pymysql.install_as_MySQLdb()
 
 
-  </div>
-  </div>
-  </div>
+      </div>
+      </div>
+      </div>
    
   
             INICIANDO O AMBIENTE CARREGANDO O PYTHON DJANGO, E VM
