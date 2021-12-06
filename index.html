@@ -345,6 +345,8 @@
   </div>
     <pre>
   
+            INICIANDO O AMBIENTE CARREGANDO O PYTHON DJANGO, E VM
+  
        (1) Instalar o python no site da python
            python.org
            instalar versão superior ao python 3
@@ -373,6 +375,79 @@
        (7) criar um projeto
            django-admin startproject "nome"
     
+          
+          
+          CICLO BÁSICO DE CRIAÇÃO DE APP
+          
+       Projetos e  APP
+
+        (1) Criação do projeto "todo"
+            mkdir projeto todo
+            cd projeto todo/
+
+        (2) Criar uma VM
+            virtualenv venvtodo
+            dir venvtodo
+            source venvtodo/script/activate
+
+        (3) Intalar o django dentro da VM
+            pip install django
+            django --version
+
+        (4) Iniciando  o projeto
+            django-admin startproject todo
+            code.
+            para ver o projeto dentro do VisualStudio
+
+        (5) VisualStudio -> Terminal -> New Terminal
+            para executar o terminal dentro do VisualStudio
+
+        (6) Criando Apps
+            django-admin startapp task
+            django-admin startapp about
+            django-admin startapp user
+
+        (7) Dentro do arquivo seitings.py em INSTALLED_APPS inserir
+            task,
+            about,
+            user,
+
+        (8) Copiar a strutura de urls, do projeto tirar o import
+            e inserir em cada uma das apps. 
+            tirar a linha de import admin
+
+        (9) Importar arquivo de views 
+            from - import views
+
+
+        (10) Criar url com função path
+            path('helloworld/', views.helloworld),   
+
+        (11) Criar a helloworld no arquivo de views dentro
+             da aplicação tasks
+
+             def helloworld(request):
+                return httpResponse('Hello World')
+        (12) ainda dentro deste arquivo importar o httpResponse
+             from django.http import httpResponse,
+
+        (13) No arquivo de url do projeto
+             na linha from django.urls import path,
+             complete com  include
+
+        (14) Para que todas as urls do projeto peguem do raiz a url task
+             insira a linha
+             path('',include('tasks.urls'))
+    
+          
+          
+          
+          
+          
+          
+          
+          
+          
           
      </pre>    
          
