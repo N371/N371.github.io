@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Heroes · Bootstrap v5.1</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/heroes/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="sql.css" rel="stylesheet">
+  </head>
+  <body>
+    
+<main>
+  <h1 class="visually-hidden">Tutorial de SQL</h1>
+
+  <div class="px-4 py-5 my-5 text-center">
+    
+    <h1 class="display-5 fw-bold">Criação de esquemas</h1>
+    <div class="col-lg-6 mx-auto">
+
+      
+        <p class="lead mb-4"></p>     CREATE SCHEMA schema_name AUTHORIZATION owner_name </p>
+        <p class="lead mb-4"></p>  Criando esquemas para customers, orders, products e lookuptables </p>
+        <p class="lead mb-4"></p>     CREATE SCHEMA customers AUTHORIZATION dbo </p>
+        <p class="lead mb-4"></p>     CREATE SCHEMA orders AUTHORIZATION dbo  </p> 
+        <p class="lead mb-4"></p>     CREATE SCHEMA products AUTHORIZATION dbo  </p>
+        <p class="lead mb-4"></p>     CREATE SCHEMA lookuptable AUTHORIZATION dbo  </p>
+             
+      </div>
+    </div>
+  </div>
+  <img src="bootstrap-docs.png" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">
+
+  <div class="b-example-divider"></div>
+       
+
+
+  <div class="px-4 py-5 my-5 text-center">
+    
+    <h1 class="display-5 fw-bold">Dados Numéricos</h1>
+    <div class="col-lg-6 mx-auto">
+
+      
+        <p class="lead mb-4"></p>     Tabela de dados númericos para os campos das tabelas
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Tipos de Dados</th>
+              <th scope="col">Intervalo de Valores</th>
+              <th scope="col">Espaço Armazenamento</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>tinyint</td>
+              <td>smalint</td>
+              <td>int</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>0 a 255</td>
+              <td>-32768 a 32767</td>
+              <td>-2^31 a 21 -1</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>1 byte</td>
+              <td>2 bytes</td>
+              <td>4 bytes</td>
+            </tr>
+          </tbody>
+        </table>
+      
+        </p>
+        
+      </div>
+    </div>
+  </div>
+  <img src="bootstrap-docs.png" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">
+
+  <div class="b-example-divider"></div>
+
+
+
+<br>
+
+  <p class="lead mb-4"></p>  EXEMPLO DE CAMPO COM CALCULO
+  <br>
+  <br>
+  <br>
+  <br>
+  <p class="lead mb-4"></p>  CREATE TABLE Orders.OrderHeader
+  <br>
+  <p class="lead mb-4"></p>  (orderID  INT  IDENTITY(1,1),
+  <p class="lead mb-4"></p>  OrderDate DATE NOT NULL,
+  <p class="lead mb-4"></p>  SubTotal  MONEY NOT NULL,
+  <p class="lead mb-4"></p>  TaxAmount MONEY NOT NULL,
+  <p class="lead mb-4"></p>  ShippingAmount MONEY NOT NULL,
+  <p class="lead mb-4"></p>  GrandTotal  AS(SubTotal + TaxAmount _ ShippingAmount),
+  <p class="lead mb-4"></p>  FinalSipDate  DATE   NULL)
+  <br>
+  <div class="b-example-divider"></div>
+  <p class="lead mb-4"></p>  EXEMPLO DE DECLARAÇÃO DE CAMPO ESPARSO
+  <br>
+  <p class="lead mb-4"></p>  AddressLine2  VARCHAR(50) SPARSE NULL,
+  <br>
+  <div class="b-example-divider"></div>
+  <p class="lead mb-4"></p>  EXEMPLO DE DECLARAÇÃO DE CHAVE PRIMÁRIA
+  <p class="lead mb-4"></p>  CONSTRAINT pk_orderheader PRIMARY KEY(OrderID))
+  <br>
+  <div class="b-example-divider"></div>
+  <p class="lead mb-4"></p>  EXEMPLO DE ADIÇÃO DE CHAVE PRIMÁRIA A TABELA EXISTENTE
+  <p class="lead mb-4"></p>  ALTER TABLE Products.Product 
+  <p class="lead mb-4"></p>  ADD CONSTRAINT pk_product PRIMARY KEY(ProductID)
+  <div class="b-example-divider"></div>
+  <p class="lead mb-4"></p>  EXEMPLO DE DECLARAÇÃO DE CHAVE ÚNICA
+  <div class="b-example-divider"></div>
+  <p class="lead mb-4"></p>  DocumentID UNIQUEIDENTIFIER ROWGUIDCOL UNIQUE,
+  <br>
+  <div class="b-example-divider"></div>
+  <p class="lead mb-4"></p>  EXEMPLO DO USO DE RESTRIÇÃO CHECK
+  <p class="lead mb-4"></p>  ProductCost  MONEY NOT NULL CHECK(ProductCost > 0)
+  <div class="b-example-divider"></div>
+  <br>
+  <p class="lead mb-4"></p>  EXEMPLO DE DECLARAÇÃO DE VALOR PADRÃO PARA O CAMPO 
+  <p class="lead mb-4"></p>  OrderDate  DATE    NOT NULL CONSTRAINT df_orderdate DEFAULT GETDATE(),
+  <br>
+  <p class="lead mb-4"></p>  CONSTRAINT pk_stateprovidence PRIMARY KEY(StateProvidenceID)
+  <br>
+  <br>
+  <div class="b-example-divider"></div>
+  <p class="lead mb-4"></p>  EXEMPLO DE CRIAÇÃO DE INDICES CRUSTERIZADOS
+  <br>
+  <p class="lead mb-4"></p>  Tem que remover a chave estrangeira primeiro, porque estrangeiradepende
+  <p class="lead mb-4"></p>  da chave PRIMÁRIA
+  <p class="lead mb-4"></p>  ALTER TABLE Orders 
+  <p class="lead mb-4"></p>  OrderDetail 
+  <p class="lead mb-4"></p>  DROP CONSTRAINT (fk_orderheadertooordetails)
+  <br>
+  <p class="lead mb-4"></p>  Mude a chave primária existente para uma não crusterizada
+  <p class="lead mb-4"></p>  ALTER TABLE Orders.OrderHeader 
+  <br>
+  <p class="lead mb-4"></p>  Recrie a chave estrangeira 
+  <p class="lead mb-4"></p>  ALTER TABLE Orders.OrderDetail  
+  <p class="lead mb-4"></p>  ADD CONSTRAINT fk_orderheadertoodertail FOREIGN KEY(OrderID)
+  <p class="lead mb-4"></p>  REFERENCES Orders.OrderHeader(OrderID)
+  <br>
+  <p class="lead mb-4"></p>  Crie novos indices clusterizados nas colunas SHIP DATE
+  <br>
+  <p class="lead mb-4"></p>  CREATE CLUSTERED INDEX icx_shipdate ON Orders.OrderDetail(ShipDate)
+  <br>
+  <br>
+  <div class="b-example-divider"></div>
+  <p class="lead mb-4"></p>  EXEMPLO DE CRIAÇÃO DE INDICE NÃO clusterizados
+  <br>
+  <p class="lead mb-4"></p>  CREATE NONCLUSTERED INDEX
+  <p class="lead mb-4"></p>  idx_lastnamefirsname ON 
+  <p class="lead mb-4"></p>  Customers.Customer(LastName,
+  <p class="lead mb-4"></p>  FirstName)
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <p class="lead mb-4"></p> EXEMPLO DA CRIAÇÃO DO AMBIENTE COM MYSQL E WORKBENCH
+  <br>
+  <p class="lead mb-4"></p> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '214236';
+  <br>
+  <br>
+  <p class="lead mb-4"></p> ENTRANDO COMO SUPERUSUARIO
+  <p class="lead mb-4"></p> sudo mysql -uroot -p
+  <br>
+  <p class="lead mb-4"></p> VERIFICANDO O STATUS DO SERVIDOR MYSQL
+  <p class="lead mb-4"></p> service mysql status
+  <br>
+  <br>
+  <p class="lead mb-4"></p> INSTALANDO O PACOTE QUE FOI DESCOMPACTADO DO WORKBENCH
+  <p class="lead mb-4"></p> sudo apt-get -f install
+  <br>
+  <p class="lead mb-4"></p> PACOTE BAIXADO DO WORKBENCH A SER INSTALANDOsudo 
+  <p class="lead mb-4"></p> dpkg -i mysql-workbench-community.deb
+  <br>
+  <p class="lead mb-4"></p> LINK PARA BAIXAR O WORKBENCH
+  <p class="lead mb-4"></p> wget http://cdn.mysql.com/Downloads/MySQLGUITools/mysql-workbench-community_8.0.25-1ubuntu20.04_amd64.deb -O mysql-workbench-community.deb
+  <br>
+  <p class="lead mb-4"></p> COMANDO PARA VERIFICAR A VERSÃO DO UBUNTU
+  <p class="lead mb-4"></p> lsb_release -rs
+  <br>
+  <br>
+  <p class="lead mb-4"></p>   CRIANDO PROJETOS  DJANGO
+  <p class="lead mb-4"></p> django-admin startproject nome_do_projeto
+  <p class="lead mb-4"></p> RENOMEIO O DIRETÓRIO DE PROJETOS
+  <br>
+  <br>
+  <br>
+  <p class="lead mb-4"></p> 'CRIANDO UM APP 
+  <p class="lead mb-4"></p> manage.py startapp main
+  <br>
+  <br>
+  <br>
+  <p class="lead mb-4"></p>   CONFIGURANDO  o settings.py  
+  <br>
+  <p class="lead mb-4"></p> LANGUAGE_CODE = 'pt-br'
+  <br>
+  <p class="lead mb-4"></p> TIME_ZONE = 'America/Sao Paulo'
+  <br>
+  <br>
+  <p class="lead mb-4"></p> INSTALLED_APPS = [
+  <br>
+  <p class="lead mb-4"></p> ‘django.contrib.admin’,
+  <br>
+  <p class="lead mb-4"></p> ‘django.contrib.auth’,
+  <br>
+  <p class="lead mb-4"></p> ‘django.contrib.contenttypes’,
+  <br>
+  <p class="lead mb-4"></p> ‘django.contrib.sessions’,
+  <br>
+  <p class="lead mb-4"></p> ‘django.contrib.messages’,
+  <br>
+  <p class="lead mb-4"></p> ‘django.contrib.staticfiles’,
+  <br>
+  <p class="lead mb-4"></p> ‘main.apps.MainConfig’,
+  <br>
+  <p class="lead mb-4"></p> ]
+  <br>
+  <br>
+  <br>
+  <p class="lead mb-4"></p> STATICFILES_DIRS = (
+    <p class="lead mb-4"></p> os.path.join(BASE_DIR, ‘static’),
+    <p class="lead mb-4"></p> )
+    <p class="lead mb-4"></p> STATIC_ROOT = os.path.join(BASE_DIR, ‘staticfiles’)
+    <br>
+    <br>
+    <p class="lead mb-4"></p> MEDIA_ROOT = os.path.join(BASE_DIR, ‘upload’)
+    <p class="lead mb-4"></p> MEDIA_URL = ‘/upload/’
+    <br>
+    <br>
+    <br>
+    <p class="lead mb-4"></p> DATABASES = {
+      <br>
+      <p class="lead mb-4"></p> ‘default’: {
+        <p class="lead mb-4"></p> ‘ENGINE’: ‘django.db.backends.mysql’,
+        <p class="lead mb-4"></p> ‘NAME’: os.path.join(BASE_DIR, ‘db.mysql),
+        <p class="lead mb-4"></p> 'USER': 'DB_USER',
+        <p class="lead mb-4"></p> 'PASSWORD': '214236',
+        <p class="lead mb-4"></p> 'Host': 'localhost',   
+        <p class="lead mb-4"></p> 'PORT': '3306',
+        <br>
+        <p class="lead mb-4"></p>   }
+        <br>
+  }<p class="lead mb-4"></p> 
+  <br>
+  <br>
+  <p class="lead mb-4"></p> INSTALANDO O CONNECTOR PYTHON PARA MYSQL
+  <p class="lead mb-4"></p> pip install mysql-connector-python
+  <br>
+  <p class="lead mb-4"></p> SE FOR PRECISO ATUALIZAR VERSÃO DO DJANGO
+  <p class="lead mb-4"></p> pip install django==3.0.7
+  <br>
+  <p class="lead mb-4"></p> erro=>
+  <p class="lead mb-4"></p> query = query.decode(errors='replace')
+  <p class="lead mb-4"></p> AttributeError: 'str' object has no attribute 'decode'
+  <br>
+  <br>
+  <p class="lead mb-4"></p> ATUALIZANDO TUDO
+  <p class="lead mb-4"></p> ./manage.py migrate
+  <br>
+  <br>
+  <p class="lead mb-4"></p> INICIANDO O SERVIDOR
+  <p class="lead mb-4"></p> ./manage.py runserver
+  <br>
+  <br>
+  <br>
+  <br>
+  <p class="lead mb-4"></p> erro=
+  <p class="lead mb-4"></p> Your models have changes that are not yet reflected in a migration, and so won't be applied.
+  <p class="lead mb-4"></p> Run 'manage.py makemigrations' to make new migrations, and then re-run 'manage.py migrate' to apply them.
+  <br>
+  <br>
+  <p class="lead mb-4"></p> PARA EXIBIR OS REGISTROS
+  <br>
+  <br>
+  <p class="lead mb-4"></p> ./manage.py shell
+  <p class="lead mb-4"></p> Python 3.8.10 (default, Sep 28 2021, 16:10:42) 
+  <p class="lead mb-4"></p> [GCC 9.3.0] on linux
+  <p class="lead mb-4"></p> Type "help", "copyright", "credits" or "license" for more information.
+  <p class="lead mb-4"></p> (InteractiveConsole)
+  <p class="lead mb-4"></p> >>> from main.models import Produto
+  <p class="lead mb-4"></p> >>> Produto.objects.all()
+
+
+  <p class="lead mb-4"></p> PARA A MENSAGEM DE ERRO QUANDO PYTHON ESTIVER INSTALADO
+  <BR>
+    <BR>
+  <p class="lead mb-4"></p> /usr/bin/env: “python”: Arquivo ou diretório inexistente
+  <p class="lead mb-4"></p> whereis python3
+  <p class="lead mb-4"></p> sudo ln -s /usr/bin/python3 /usr/bin/python
+  <BR>
+    <BR>
+       <p class="lead mb-4"></p> ERRO:
+       <p class="lead mb-4"></p> raise ImproperlyConfigured( django.core.exceptions.ImproperlyConfigured: E
+       <p class="lead mb-4"></p> Error loading MySQLdb module. Did you install mysqlclient?
+       <BR>
+        <BR>
+       <p class="lead mb-4"></p> __init__.py
+       <BR>
+        <BR>
+       <p class="lead mb-4"></p> import pymysql
+       <BR>
+        <BR>
+       <p class="lead mb-4"></p> pymysql.install_as_MySQLdb()
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+  
+</main>
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+      
+  </body>
+</html>
