@@ -325,30 +325,57 @@
   <p class="lead mb-4"></p> whereis python3
   <p class="lead mb-4"></p> sudo ln -s /usr/bin/python3 /usr/bin/python
   <BR>
-    <BR>
-       <p class="lead mb-4"></p> ERRO:
-       <p class="lead mb-4"></p> raise ImproperlyConfigured( django.core.exceptions.ImproperlyConfigured: E
-       <p class="lead mb-4"></p> Error loading MySQLdb module. Did you install mysqlclient?
-       <BR>
-        <BR>
-       <p class="lead mb-4"></p> __init__.py
-       <BR>
-        <BR>
-       <p class="lead mb-4"></p> import pymysql
-       <BR>
-        <BR>
-       <p class="lead mb-4"></p> pymysql.install_as_MySQLdb()
+   <BR>
+  <p class="lead mb-4"></p> ERRO:
+  <p class="lead mb-4"></p> raise ImproperlyConfigured( django.core.exceptions.ImproperlyConfigured: E
+  <p class="lead mb-4"></p> Error loading MySQLdb module. Did you install mysqlclient?
+  <BR>
+  <BR>
+  <p class="lead mb-4"></p> __init__.py
+  <BR>
+  <BR>
+  <p class="lead mb-4"></p> import pymysql
+  <BR>
+  <BR>
+  <p class="lead mb-4"></p> pymysql.install_as_MySQLdb()
 
 
-
-
-
-
-
-      </div>
-    </div>
+  </div>
+  </div>
   </div>
   
+       (1) Instalar o python no site da python
+           python.org
+           instalar versão superior ao python 3
+           
+           Após instalar,  verificar a instalação
+           python --version
+           pip --version
+    
+       (2) Instalando a máquina virtual
+           pip install virtualenv
+    
+       (3) mkdir "criar um diretório para o projeto"
+           cd "mover para dentro"
+           virtualenv "nome da mv"
+    
+       (4) source "nome da vm"
+           source "nome da vem"/
+       
+       (5) dentro de script
+           activate
+    
+       (6) Instalando o django
+           pip install django
+           django-admin --version
+    
+       (7) criar um projeto
+           django-admin startproject "nome"
+    
+          
+         
+         
+         
 </main>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
