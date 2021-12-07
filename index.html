@@ -399,7 +399,147 @@ You’re seeing this error because you have DEBUG = True inyour Django settings 
           
           
           
-          
+  RAILS RAILS RAILS RAILS RAILS RAILS RAILS RAILS RAILS RAILS RAILS RAILS RAILS RAILS RAILS RAILS RAILS RAILS RAILS RAILS RAILS RAILS RAILS RAILS RAILS RAILS RAILS RAILS 
+  
+  
+  Configurar Ambiente Rails NO WINDOWS
+
+1. Instalar WSL se estiver usando Windows.
+Se estiver usando Windows, seguir os passos aqui para instalar o WSL e instale o Ubuntu no WSL. Se estiver usando Ubuntu, siga para o próximo passo.
+
+      A partir de agora, todos os comandos devem ser executados no terminal do Ubuntu ou WSL.
+2. Na barra de status (no Ubuntu), clicar em Editar > Preferências do Perfil. Selecionar a aba Comando e checar a opção "Executar Comando como Shell de Sessão". 
+3. Fechar o Terminal e abrir novamente.
+OBS: A partir de agora todos os comandos serão escritos na linha abaixo do número do passo e serão precedidos por "->". Não digitar/copiar o "->".
+4. Executar o comando
+-> gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+5. Executar o comando
+ 	->sudo apt-get update
+---- OBS: Ao executar comando com sudo, deve ser solicitada a senha de sudo, digitar a senha criada ao instalar o Linux
+
+6. Executar o comando
+	-> sudo apt-get install curl
+7. Executar o comando
+-> \curl -L https://get.rvm.io | bash -s stable
+8. Fechar o Terminal e abrir novamente
+9. Executar o comando
+	-> source ~/.rvm/scripts/rvm
+10. Executar o comando
+	-> rvm requirements
+11. Executar o comando
+	-> rvm install ruby
+12. Executar o comando
+	-> rvm use ruby --default
+13. Executar o comando
+	-> rvm rubygems current
+14. Executar o comando
+	-> gem install rails
+15. Executar o comando
+	-> mkdir rails_workspace
+OBS: Este comando cria um novo diretório com qualquer nome, onde serão salvos os aplicativos Rails
+16. Executar o comando
+	-> cd rails_workspace
+17. Executar comando
+        -> sudo apt-get install git-core
+Obs: Provavelmente esse passo não será necessário ao instalar o rails 6, mas rode mesmo assim
+18. Agora dentro da pasta rails_workspace execute o comando
+	-> rails new teste
+19. Executar o comando
+	-> cd teste
+20. Executar o comando 
+	-> rails server
+OBS: Se ocorrer um erro: "Webpacker configuration file not found /home/luciano/rails_workspace/teste/config/webpacker.yml." Execute o comando -> rails webpacker:install
+Talvez precise de uma versão mais nova do Node JS, basta acessar esse link https://www.ubuntuupdates.org/package/nodejs_8.x/xenial/main/base/nodejs e baixar o 32bit deb package ou 64 dependendo do seu sistema e dar dois cliques para abrir, a instalação será automatica
+Também deve precisar instalar o Yarm: https://classic.yarnpkg.com/en/docs/install/#debian-stable só seguir as instruções
+Agora finalmente volte ao passo 20.
+OBS: O passo 20 terá funcionado se o terminal não voltar ao prompt de comando. Ele deve ficar parado numa mensagem parecida com:
+=> Booting Puma
+=> Rails 6.0.2.2 application starting in development 
+=> Run `rails server --help` for more startup options
+=> Ctrl-C to shutdown server
+[2016-04-01 09:50:54] INFO  WEBrick 1.3.1
+[2016-04-01 09:50:54] INFO  ruby 2.3.0 (2015-12-25) [x86_64-linux]
+[2016-04-01 09:50:54] INFO  WEBrick::HTTPServer#start: pid=6429 port=3000
+21. Abrir o navegado e acessar a URL: localhost:3000. Se uma página escrita "Yay! You’re on Rails!" com o logo do Rails aparecer. Tudo está corretamente instalado
+22. Volte ao terminal e se o servidor ainda estiver rodando, pressionar Ctrl + C para parar. então o terminal deve voltar ao Prompt de comando.
+23. Executar o comando
+	-> sudo apt-get install postgresql postgresql-contrib
+24. Executar o comando
+	-> sudo -i -u postgres
+25. Executar o comando
+	-> psql
+26. Executar o comando (Substituir <SEU_ROLE> e <SEU_PASSWORD> por qualquer valor que prefira.
+	-> CREATE ROLE <SEU_ROLE> WITH createdb login PASSWORD '<SEU_PASSWORD>';
+       OBS: Note o ;(ponto e vírugla) no fim do comando.
+      Exemplo: CREATE ROLE luciano WITH createdb login PASSWORD 'luciano';
+27. Executar o comando
+	-> \q
+28. Executar o comando
+	-> gem install pg
+OBS.: Se ocorrer algum erro no momento da instalação da GEM pg execute o passo 29. (Provavelmente Ubuntu precisará)
+29. Executar o comando
+	-> sudo apt-get install libpq-dev
+
+
+
+Configurar Git
+1. Executar comando
+	-> ssh -V
+2. Executar comando
+	-> ls -a ~/.ssh
+3. Executar comando
+4. 	-> ssh-keygen
+5. ---- OBS.: Aqui você vai digitar o nome do arquivo para ser salvo, se quiser usar o padrão, basta apertar enter. 
+Depois vai pedir a senha, aconselho criar uma e de preferência não esquecer. 
+Depois vai aparecer algo parecido com isso significando que está ok:
++---[RSA 2048]----+
+|  .       .      |
+| . . .   . +     |
+|. + oE.   *      |
+| . * ... . = .   |
+|  . +o. S.o B . .|
+|   o.....+.B = ..|
+|    ..o.o *.+ o .|
+|      o= o.o ....|
+|    .o..+o.   .o |
++----[SHA256]-----+
+6. Executar comando
+-> ls -a ~/.ssh
+7. Executar comando
+	-> ps -e | grep [s]sh-agent
+8. Executar comando
+	-> ssh-agent /bin/bash
+9. Executar comando
+	-> ps -e | grep [s]sh-agent
+10. Executar comando
+	-> ssh-add ~/.ssh/id_rsa
+OBS.: Aqui vai pedir a senha do seu id rsa, é a senha que vc criou no passo 5
+11. Executar comando
+	-> ssh-add -l
+12. Executar comando
+	-> cat ~/.ssh/id_rsa.pub
+OBS.: O comando acima "cat" vai printar sua key na tela, você precisará dela para o próximo passo
+13. Copiar todo o hash printado no comando anterior e adicionar no Github para isso:
+Logar no Bitbucket: https://github.com/
+Clicar na sua foto do perfil e selecionar "Settings"
+Clicar em "SSH and GPG Keys"
+Clicar em "New SSH Key"
+Dar um nome "Title" qualquer
+Colar a key copiada no campo "Key"
+Este é o endereço, caso já esteja logado no github(https://github.com/settings/ssh/new)
+OBS: O Github é uma aplicação Rails 😉	
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
           
           
      </pre>    
