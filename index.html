@@ -406,33 +406,33 @@ Criar um template base
 
 {% load static %}
 
-<!--!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
-    <div class="row">
+[!DOCTYPE html]
+[html lang="en"]
+[head]
+    [meta charset="UTF-8"]
+    [meta name="viewport" content="width=device-width, initial-scale=1.0"]
+    [meta http-equiv="X-UA-Compatible" content="ie=edge"]
+    [title>{% block title %}{% endblock %}</title]
+    [link rel="stylesheet" href="{% static 'css/styles.css' %}"]
+[/head]
+[body]
+    [div class="row"]
         {% block content %}
         {% endblock %}
-    </div>
-</body>{% load static %}
-</html-->
+    [/div]
+[/body]{% load static %}
+[/html]
 
 
 
 Criar um post_list.html, dentro do APP
-<!--
+[
 {% extends 'blog/base.html' %}
 {% block title %}Listagem de Posts{% endblock %}
 
 {% block content %}
-    <h1>Esta é a listagem de posts</h1>
-    <p>Aqui teremos alguns posts para mostrar.</p>
+    [h1]Esta é a listagem de posts[/h1]
+    [p]Aqui teremos alguns posts para mostrar.[/p]
 {% endblock %}
 -->
 
@@ -442,8 +442,8 @@ Criar um contact.html, dentro do APP
 {% block title %}Título do post{% endblock %}
 
 {% block content %}
-    <h1>Quer entrar em contato conosco?</h1>
-{% endblock %} -->
+    [h1]Quer entrar em contato conosco?[/h1]
+{% endblock %} 
 	
 		
 	
