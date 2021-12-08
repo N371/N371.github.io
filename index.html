@@ -396,6 +396,81 @@ You’re seeing this error because you have DEBUG = True inyour Django settings 
              h1 O seu nome é: {{ name }} /h1 
           
           
+EXTENSÃO DE TEMPLATES
+
+REATURES
+
+Criar um template base
+    base.html (dentro do template geral)
+
+
+{% load static %}
+
+<!--!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="row">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>{% load static %}
+</html-->
+
+
+
+Criar um post_list.html, dentro do APP
+<!--
+{% extends 'blog/base.html' %}
+{% block title %}Listagem de Posts{% endblock %}
+
+{% block content %}
+    <h1>Esta é a listagem de posts</h1>
+    <p>Aqui teremos alguns posts para mostrar.</p>
+{% endblock %}
+-->
+
+Criar um contact.html, dentro do APP
+<!--
+{% extends 'blog/base.html' %}
+{% block title %}Título do post{% endblock %}
+
+{% block content %}
+    <h1>Quer entrar em contato conosco?</h1>
+{% endblock %} -->
+	
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
           
           <h1 class="visually-hidden"> help Rubi and Rails</h1>
           
