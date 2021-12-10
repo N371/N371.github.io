@@ -633,8 +633,424 @@ OBS: O Github é uma aplicação Rails 😉
 
 
 
+	
+	
+	
+	
 
-  
+  *********************************************************************************************************************************
+	                                             CÓDIGOS EXEMPLO PY
+  *********************************************************************************************************************************
+	
+	
+	
+	
+	
+*******************pasta da sua aplicação*************
+
+*******models.py***********
+
+
+
+
+from django.db import models
+
+class Categoria(models.Model):
+
+nome = models.CharField(max_length=150, db_index=True)
+
+slug = models.SlugField(max_length=150, unique=True, db_
+index=True)
+
+data_criacao = models.DateTimeField(auto_now_add=True)
+
+data_ultima_atualizacao = models.DateTimeField(auto_
+now=True)
+
+def __str__(self):
+
+return self.nome
+
+class Produto(models.Model):
+
+nome = models.CharField(max_length=100, db_index=True)
+
+slug = models.SlugField(max_length=100, db_index=True)
+
+descricao = models.TextField(blank=True)
+
+preco = models.DecimalField(max_digits=10, decimal_places=2)
+
+disponivel = models.BooleanField(default=True)
+
+estoque = models.PositiveIntegerField()
+
+data_criacao = models.DateTimeField(auto_now_add=True)
+
+data_ultima_atualizacao = models.DateTimeField(auto_
+now=True)
+
+imagem = models.ImageField(upload_to=’imagens-produtos’, blank=True)
+
+def __str__(self):
+
+return self.nome
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*************   index file  ************
+
+PASTA TEMPLATE
+
+
+
+{% load static %}
+
+<!doctype html>
+
+<html>
+
+<head>
+
+<!-- tags meta obrigatórias -->
+
+<meta charset=”utf-8”>
+
+<meta name=”viewport” content=”width=device-width, initial-scale=1, shrink-to-fit=no”>
+
+<!-- folha de estilos do Bootstrap CSS -->
+
+<link rel=”stylesheet” href=”{% static ‘css/bootstrap.min.css’ %}” >
+
+<title>Testando o Bootstrap para criar um template </title>
+
+</head>
+
+<body>
+
+<h1>Teste do Bootstrap</h1>
+
+<!-- JavaScript opcional -->
+
+<!-- jQuery, Popper.js e Bootstrap JS – bibliotecas JS -->
+
+<script src=”{% static ‘js/jquery.min.js’ %}”></script>
+
+<script src=”{% static ‘js/popper.min.js’ %}”></script>
+
+<script src=”{% static ‘js/bootstrap.min.js’ %}”></script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+********************  URL  PY  *********************
+
+from django.contrib import admin
+
+from django.urls import path
+
+from django.views.generic import TemplateView
+
+urlpatterns = [
+
+path(‘admin/’, admin.site.urls, name=’admin’),
+
+path(‘’, TemplateView.as_view(template_name=’index.html’), name=’index’),
+
+]
+
+
+
+
+************** CRIAR DIRETÓRIOS ****************
+
+mkdir prj_lojavirtual\static
+
+mkdir prj_lojavirtual\static\css
+
+mkdir prj_lojavirtual\static\img
+
+mkdir prj_lojavirtual\static\js
+
+
+
+
+************** base.html ****************
+
+{% load static %}
+
+<!doctype html>
+
+<html>
+
+<head>
+
+<!-- tags meta obrigatórias -->
+
+<meta charset=”utf-8”>
+
+<meta name=”viewport” content=”width=device-width,
+initial-scale=1, shrink-to-fit=no”>
+
+<link rel=”stylesheet” href=”{% static ‘css/bootstrap.min.css’ %}” >
+
+<title> Loja Virtual </title>
+
+</head>
+
+<body>
+
+{% include ‘snippets/barra_navegacao.html’ %}
+
+{% block conteudo %}
+
+{% endblock conteudo %}
+
+{% include ‘snippets/rodape.html’ %}
+
+<script src=”{% static ‘js/jquery.min.js’ %}”></script>
+
+<script src=”{% static ‘js/popper.min.js’ %}”></script>
+
+<script src=”{% static ‘js/bootstrap.min.js’ %}”></script>
+
+</body>
+
+</html>
+
+
+
+
+************** cabeçalhos e rodapés  ****************
+
+/prj_lojavirtual/templates/snippets/
+
+
+
+barra_de_navegacao
+
+<nav class=”navbar navbar-expand-lg navbar-light bg-primary”>
+
+<a class=”navbar-brand text-light” href=”/”>
+
+Loja Virtual
+
+</a>
+
+<button class=”navbar-toggler”
+
+type=”button”
+
+data-toggle=”collapse”
+
+data-target=”#navbarSupportedContent” >
+
+<span class=”navbar-toggler-icon”></span>
+
+</button>
+
+<div class=”collapse navbar-collapse” id=”navbarSupportedContent”>
+
+<ul class=”navbar-nav mr-auto”>
+
+<li class=”nav-item”>
+
+<a class=”nav-link text-light” href=”/”>
+
+Página Principal
+
+</a>
+
+</li>
+
+<li class=”nav-item”>
+
+<a class=”nav-link text-light” href=”/ajuda/”>Ajuda</a>
+
+</li>
+
+</ul>
+
+</div>
+
+</nav>
+
+
+
+
+*****************   AJUDA  ************************
+{% extends “base.html” %}
+
+{% block conteudo %}
+
+<h2>Ajuda</h2>
+
+<h3> Loja Virtual</h3>
+
+<p>Sistema de loja virtual</p>
+
+<p>Parte integrante do livro “Desenvolvimento web ágil com Python
+
+e Django”.</p>
+
+{% endblock conteudo %}
+
+
+
+*****************  urls.py do projeto  ********************
+
+from django.contrib import admin
+
+from django.urls import path
+
+from django.views.generic import TemplateView
+
+from main import views
+
+urlpatterns = [
+
+path(‘admin/’, admin.site.urls, name=”admin”),
+
+path(‘ajuda/’, TemplateView.as_view(template_name=’ajuda.html’), name=”ajuda”),
+
+path(‘fale-conosco/’, views.ViewFaleConosco.as_view(),
+name=”fale_conosco”),
+
+path(‘’, TemplateView.as_view(template_name=’main.html’), name=”main”),
+
+]
+
+
+
+
+****************** prj_lojavirtual/main/forms.py. *********************
+
+from django import forms
+
+class FormFaleConosco(forms.Form):
+
+nome = forms.CharField(required=True)
+
+email_origem = forms.EmailField(required=True, label = ‘Entre com seu e-mail:’)
+
+mensagem = forms.CharField(required=True)
+
+
+
+
+******************  fale_conosco.html  ************************
+
+
+
+{% extends “base.html” %}
+{% block conteudo %}
+<h2>Fale conosco</h2>
+<p>Envie-nos uma mensagem, que teremos todo o prazer em
+atendê-lo(a). </p>
+<form method=”POST”>
+{% csrf_token %}
+{{ form.as_p }}
+<button type=”submit” class=”btn btn-primary”>Enviar</button>
+</form>
+{% endblock conteudo %}
+
+
+
+
+
+
+****************    views.py  ********************
+
+from django.views.generic.edit import FormView
+
+from main import forms
+
+class ViewFaleConosco(FormView):
+
+template_name = “fale_conosco.html”
+
+form_class = forms.FormFaleConosco
+
+success_url = “/”
+
+def form_valid(self, form):
+
+form.enviar_mensagem_por_email()
+
+return super().form_valid(form)
+
+
+
+
+***********************  form_valid()  *********************
+
+
+
+from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from .forms import FormFaleConosco
+def contactar(request):
+if request.method == ‘POST’:
+# POST, instancia um objeto da classe ContactForm,
+# populado com os dados recebidos do template
+formulario = FormFaleConosco(request.POST)
+# Validação dos dados:
+if formulario.is_valid():
+# Chamar métodos de negócio da aplicação aqui
+# Redirecionar a resposta para outra URL:
+return
+HttpResponseRedirect(‘/resultado/contato/resposta’)
+else:
+# GET, retorna formulário vazio
+form = FormFaleConosco()
+return render(request,’sobre/contato.html’,
+{‘formulario’:formulario})
+
+
+
+
+
+
+************ /prj_lojavirtual/main/forms.py.  ******************
+
+
+from django import forms
+from django.core.mail import send_mail
+from lojavirtual import settings
+class FormFaleConosco(forms.Form):
+nome = forms.CharField(required=True,
+initial=’Seu nome aqui’)
+email_origem = forms.EmailField(label =
+‘Entre com seu e-mail’)
+mensagem = forms.CharField(required=True,
+widget=forms.Textarea)
+def enviar_mensagem_por_email(self):
+send_mail(‘FALE CONOSCO: Mensagem recebida.’,
+self.data[‘mensagem’],
+self.data[‘email_origem’],
+[settings.EMAIL_FALE_CONOSCO],
+fail_silently=False)
   
   
   
