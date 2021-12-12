@@ -205,6 +205,40 @@ DATABASES = {
 }
   
   
+  
+  
+  
+  
+  
+  
+  
+EEEE RRRR  RRRR  OOOO
+EE   RR R  RR R  O  O
+EEE  RRR   RRR   O  O
+EE   RR R  RR R  O  O
+EEEE RR  R RR  R OOOO
+
+
+  raise ImproperlyConfigured(
+  django.core.exceptions.ImproperlyConfigured: Error loading MySQLdb module.
+  Did you install mysqlclient?
+  
+  pip install pymysql
+  
+  Then, edit the __init__.py file in your project origin dir(the same as settings.py)
+
+  add:
+
+  import pymysql
+
+   pymysql.install_as_MySQLdb()
+
+  
+  
+  
+  
+  
+  
       INSTALANDO O CONNECTOR PYTHON PARA MYSQL
       pip install mysql-connector-python
   
