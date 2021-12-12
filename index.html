@@ -193,19 +193,16 @@
    
     
     
-        DATABASES = {
-      
-          ‘default’: {
-            ‘ENGINE’: ‘django.db.backends.mysql’,
-            ‘NAME’: os.path.join(BASE_DIR, ‘db.mysql),
-            'USER': 'DB_USER',
-            'PASSWORD': '214236',
-            'Host': 'localhost',   
-            'PORT': '3306',
-       
-               }
-        
-     }
+DATABASES = {
+    'default': {
+        'ENGINE': 'Django.db.backends.mysql', 
+        'NAME': 'db_pfifteen',
+        'USER': 'nelson',
+        'PASSWORD': '214236',
+        'Host': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
+    }
+}
   
   
       INSTALANDO O CONNECTOR PYTHON PARA MYSQL
