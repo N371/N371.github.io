@@ -1,0 +1,250 @@
+
+<!--  ROTINA HTML PARA UPLOAD DE ARQUIVOS XML  -->
+<!--  1ª PARTE  NOME DA DIVISÃO  uptop         --> 
+<!--  2ª PARTE  NOME DA DIVISÃO  uptable       -->
+<!--  3ª PARTE  NOME DA DIVISÃO  upfoot        -->
+
+
+ 
+<!--  
+                ╔════════════════════════════════════════════════════════════════════════════╗    
+                ║                                                                            ║ 
+                ║                        1ª PARTE  NOME DA DIVISÃO  uptop                    ║
+                ║                                                                            ║
+                ╚════════════════════════════════════════════════════════════════════════════╝
+-->
+
+
+<section class="shell section novi-background offset-top-14 section-10 section-sm-bottom-98 section-cover" id="up">
+    
+    <div id="tela1" class="container ct1">
+        <!--  CONTAINER PARA PRIMEIRO FRAME DE COMPONENTES  -->
+        <div class="row align-items-sm-center  justify-content-sm-center ">
+            <div class="col-md-12">
+                <div class="post-vacation text-left offset-top-10">
+                    <div class="post-meta ">
+                        <div class="row align-items-sm-center justify-content-sm-center ">
+                            
+                            <input class="d-none" id="txtcopy">
+                            
+                            <div class="col-md-2 text-right">
+                                <img src="images/up.png">
+                            </div>
+                            <div class="col-md-10 offset-top-14">
+                                <p class=" big font-weight-bold text-left" style="font-size: 20px;margin-bottom:5px;">Importar Arquivos XML</p>
+
+                                <p class="text-dark no-margin">
+                                    Realize o upload dos arquivos xml diretamente do seu computador.
+                                    Os arquivos são validados e vinculados às empresas cadastradas.
+                                    Não serão aceitos arquivos inválidos e que não possuem nenhum vínculo com as empresas cadastradas
+                                </p>
+                                <p> </p>
+                            </div>
+                        </div>
+                        <!--  INICIA O DROPZONE  O nome do dropzone é  udpzesp -->
+                        <!--form action="{url}controller/uploadController.php?acao=carrega_xml" class="dropzone" id="udpzesp" name="udpzesp">
+                            <div class="fallback"> <input name="file" id="file" type="file" multiple /> </div>
+                        </form-->
+                        
+                         <form action="../html/controller/pfxupload_controller.php?acao=uploadxml" class="dropzone" id="dpzesp" name="dpzesp">
+                                        <div class="fallback"> <input name="file" id="file" type="file" multiple /> </div>
+                         </form>
+                                        
+                        
+                        <small>
+                            <!--  LINHA EMBAIXO DO DROPZONE  ALERTANDO DOS ARQUIVOS ZIP  -->
+                            <p></p>
+                            <b class="text-danger">*</b> Para arquivos .ZIP, os documentos deverão estar na raiz. Não serão selecionados arquivos em pastas e subpastas!<p class="text-dark no-margin">  </p>
+                        </small>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <!--div class="col-md-12"-->
+        </div>
+        
+    </div>
+    <!--div class="row align-items-sm-center  justify-content-sm-center "-->
+   
+<!--  
+
+                ╔════════════════════════════════════════════════════════════════════════════╗    
+                ║                                                                            ║ 
+                ║                        2ª PARTE  NOME DA DIVISÃO  uptable                  ║
+                ║                                                                            ║
+                ╚════════════════════════════════════════════════════════════════════════════╝
+-->
+  
+   <div id="tela2" class="container ct2">
+       <!--  CONTAINER PARA TABELA  -->
+       <div class="row align-items-sm-center  justify-content-sm-center ">
+           <div class="col-md-12">
+               <div class="post-vacation text-left offset-top-10">
+                   <div class="post-meta ">
+                       <div class="col-md-12">
+                           <!--p class="no-margin upesp txt-dark">
+                               <span class="icon icon-xxs mdi mdi-office-building">
+                               </span>
+
+                               <label class="n_empresa" id="empresa" for="empresa">{sl_emp} </label>
+                           </p-->
+                           <p></p>
+                           <!--  CABEÇALHO DA TABELA    data-toggle="collapse" -->
+                           <div class="post-vacation panel-table tbdv" style="margin:0 15px;" id="upxml">
+                               <!--  PAINEL DA TABELA  -->
+                               <div class="post-meta ">
+                                   <hr class="hr no-margin offset-top-10" />
+                                   <div class="table-responsive clearfix ">
+                                       <!-- BARRA DE FERRAMENTAS-->
+                                       <div id="toolbar">
+                                           <div class="dropdown ">     <!-- DESABILITADO O BOTÃO PARA SELEÇÃO   -->
+                                               <!--button class="btn btn-dark dropdown-toggle btn-xs" id="udropdownMenu1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-trigger="hover" data-toggle="popover" title="Dá opções de seleção para os arquivos listados">Selecionar<span class="caret"></span></button -->
+                                               <ul class="dropdown-menu bg-white" aria-labelledby="udropdownMenu1" x-placement="top-start">
+                                                   <li><a href="javascript:void(0)" class="sl-todas"><span class="mdi mdi-check-all font13"></span> Selecionar Todos</a></li>
+                                                   <li><a href="javascript:void(0)" class="sl-nenhuma" class="sl-nenhuma offset-top-10"><span class="mdi mdi-checkbox-multiple-blank-outline font13"></span> Deselecionar Todos</a></li>
+                                               </ul>
+                                           </div>
+                                           
+                                           <div class="dropdown">
+                                               <button class="btnpop btn-icon btn btn-espi dropdown-toggle btn-xs" id="udropdownMenurel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-trigger="hover" data-toggle="popover" title="Opções para exibir arquivos" data-content="Relatórios dos documentos exibidos na tabela abaixo"><span class=" mdi mdi-file-eye"></span><span class="caret"></span>Exibir</button>
+                                              
+                                               <ul class="dropdown-menu tbar" aria-labelledby="udropdownMenurel" x-placement="top-start">
+                                                   <li><a  class="upExbSuss" href="javascript:void(0)"><span class="text-dark mdi mdi-file-table-outline font15 inset-right-20"></span>Exibir Upload com Sucesso</a></li>
+                                                   <li class="hr no-margin" role="separator"></li>
+                                                   <li><a  class="upExExt" href="javascript:void(0)"><span class="text-dark mdi mdi-file-table-outline font15 inset-right-20"></span>Exibir Arquivos Existentes</a></li>
+                      <!-- class="btn-export" -->  <li class="hr no-margin" role="separator"></li>
+                                                   <li><a  class="upExErr" href="javascript:void(0)"><span class="text-dark mdi mdi-file-table-outline font15 inset-right-20"></span>Exibir Erro ao Realizar Upload</a></li>
+                                                </ul>
+                                               
+                                           </div>
+
+                                           
+                                           <!-- TOOLBAR -->
+                                           <div class="dropdown">
+                                               <button class="btnpop btn-icon btn btn-espi dropdown-toggle btn-xs" id="udropdownMenurel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-trigger="hover" data-toggle="popover" title="Gere relatórios extensão XLSX dos documentos localizados" data-content="Relatórios dos documentos exibidos na tabela abaixo"><span class=" mdi mdi-file-eye"></span><span class="caret"></span></button>
+                                               <ul class="dropdown-menu tbar" aria-labelledby="udropdownMenurel" x-placement="top-start">
+                                                   <li><a class="upxlsx"  href="javascript:void(0)"><span class="text-dark mdi mdi-file-table-outline font15 inset-right-20"></span>Exportar para Planílha(XLSX)</a></li>
+                                                   <li class="hr no-margin" role="separator"></li>
+                                               </ul>
+                                           </div>
+                                           
+                                           <!-- DESABILITADO O BOTÃO PARA LIMPAR SELEÇÃO -->
+                  
+                                           <div class="dropdown inset-left-20">
+                                               
+                                               <!--button class="btnpop btn btn-icon btn-outline-espi dropdown-toggle btn-xs" id="dropdownMarctb" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-trigger="hover" data-toggle="popover" title="Limpar arquivos" data-content="Crie, selecione ou delete um marcador"><span class="mdi mdi-bookmark-multiple "></span><span class="caret"></span></button -->
+                                               
+                                               <ul id="drop_marcadortb" class="dropdown-menu drop_marcador tbar" aria-labelledby="dropdownMarctb" x-placement="top-start">
+                                                   <li><a href="javascript:void(0);" class="cl-slResults"><span class="mdi mdi-tag-plus text-dark"></span> Limpar Selecionados</a></li>
+                                                   <li><a href="javascript:void(0);" class="cl-Results"><span class="mdi mdi-tag-plus text-dark"></span> Limpar Todos os Resultados</a></li>
+                                               </ul>
+                                               <!--button class="btn1">btn tst</button-->
+                                           </div>
+                                       </div>
+                                    <!-- TABELA RESPONSIVA  data-toggle="collapse"-->
+                                       <div class="col-lg-12">
+                                  <table id="table_result"  class="table font12 offset-top-10  table-body-border" data-locale="pt-BR" data-id-field="key" data-unique-id="key" table-header data-side-pagination="client" data-sort-name="resultado" data-click-to-select="false" data-single-select="false" data-classes=" table-bordered table-borderless" data-sort-order="asc" data-toggle="collapse">
+                                  </table>
+
+                                       </div>
+                                   </div><!-- TABELA RESPONSIVA-->
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+    
+    
+<!--  
+
+                ╔════════════════════════════════════════════════════════════════════════════╗    
+                ║                                                                            ║ 
+                ║                        3ª PARTE  NOME DA DIVISÃO  upfoot                   ║
+                ║                                                                            ║
+                ╚════════════════════════════════════════════════════════════════════════════╝
+
+-->
+   
+       <div id="tela3" class="container ct3">
+           <div class="row justify-content-sm-center align-items-sm-center offset-top-34">
+               <div class="col-md-11">
+                   <div class="offset-top-0 text-left" role="tablist" aria-multiselectable="true" id="accordion-tt" style="margin:0 15px;">
+                       <div class="card card-classic"><a class="card-header inset-left-10 text-dark" href="#" data-toggle="collapse" data-target="#accordion-tt--card-0-content" id="accordion-tt--card-0-header" aria-expanded="true" aria-controls="accordion-tt--card-0-content" style="padding-left: 15px;padding-right: 15px;"><b>Totais dos documentos localizados:</b></a>
+                           <div class="collapse show" id="accordion-tt--card-0-content" aria-labelledby="accordion-tt--card-0-header" data-parent="#accordion-tt">
+                               <hr class="hr">
+                               <div class="card-body inset-left-10">
+                                   <div class="row inset-left-20">
+                                       <div class="col-md-4">
+                                           <div class="row">
+                                               <div class="col-xs-1">
+                                                   <p class="no-margin"><span id="updoctb" class="inset-left-10 text-bold text-dark"></span></p>
+                                                   <p class="offset-top-14 no-margin"><span id="upnfe" class="inset-left-10 text-bold text-dark"></span></p>
+                                                   <p class="offset-top-14 no-margin"><span id="upnfc" class="inset-left-10 text-bold text-dark"></span></p>
+                                               </div>
+                                               <div class="col-xs-11">
+                                                   <p class="no-margin"><span class="inset-left-10 text-dark">Documentos </span></p>
+                                                   <p class="offset-top-14 no-margin"><span class="inset-left-10 text-dark">Arquivos NF-e</span></p>
+                                                   <p class="offset-top-14 no-margin"><span class="inset-left-10 text-dark">Arquivos NFC-e </span></p>
+                                               </div>
+                                           </div>
+                                       </div>
+                                      <div class="col-md-4">
+                                           <div class="row">
+                                               <div class="col-xs-1">
+                                                   <p class="no-margin"><span id="updoctb" class="inset-left-10 text-bold text-dark"></span></p>
+                                                   <p class="offset-top-14 no-margin"><span id="upcte" class="inset-left-10 text-bold text-dark"></span></p>
+                                                   <p class="offset-top-14 no-margin"><span id="upsat" class="inset-left-10 text-bold text-dark"></span></p>
+                                               </div>
+                                               <div class="col-xs-11">
+                                                   <p class="no-margin"><span class="inset-left-10 text-dark">Documentos </span></p>
+                                                   <p class="offset-top-14 no-margin"><span class="inset-left-10 text-dark">Arquivos CT-e</span></p>
+                                                   <p class="offset-top-14 no-margin"><span class="inset-left-10 text-dark">Arquivos CF-e (SAT)</span></p>
+                                               </div>
+                                           </div>
+                                       </div>
+                                         <div class="col-md-4">
+                                           <div class="row">
+                                               <div class="col-xs-1">
+                                                   <p class="no-margin"><span id="updoctb" class="inset-left-10 text-bold text-dark"></span></p>
+                                                   <p class="offset-top-14 no-margin"><span id="upsuss" class="inset-left-10 text-bold text-dark"></span></p>
+                                                   <p class="offset-top-14 no-margin"><span id="uperr" class="inset-left-10 text-bold text-dark"></span></p>
+                                                   
+                                               </div>
+                                               <div class="col-xs-11">
+                                                   <p class="no-margin"><span class="inset-left-10 text-dark">Resultados </span></p>
+                                                   <p class="offset-top-14 no-margin"><span class="inset-left-10 text-dark">Upload com Sucesso</span></p>
+                                                   <p class="offset-top-14 no-margin"><span class="inset-left-10 text-dark">Arquivos com Erro</span></p>
+                                                  
+                                                   
+                                               </div>
+                                           </div>
+                                       </div>
+                         
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+</section>
+
+
+
+
+
+<!--
+
+
+  <thead>
+  <tr>
+    <th data-field="id" data-width="900">ID</th>
+    <th data-field="name" data-width="100">Item Name</th>
+    <th data-field="price">Item Price</th>
+  </tr>
+  </thead>
+-->
